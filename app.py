@@ -61,8 +61,8 @@ if input_text is not None and submit_button:
                             label_visibility="visible")
             st.code(f"{dom_col}")
 
-        wcol = col_num-1
-        cols = st.columns(col_num-1)
+        wcol = col_num
+        cols = st.columns(col_num)
         temp_count = 0
         for count, value in enumerate(palette):
             if temp_count >= len(palette):
