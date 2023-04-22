@@ -80,8 +80,8 @@ if input_text is not None and submit_button:
                 st.code(colorsys.rgb_to_hsv(*value))
                 st.code(colorsys.rgb_to_hls(*value))
             # st.pyplot(show_palette(palette_hex))
-        temp = palette_list.pop(0)
-        palette_list.append(temp)
+        temp = palette_list.pop(-1)
+        palette_list.insert(0, temp)
         st.pyplot(show_palette(palette_list))
     except NameError:
         st.error("Error - Try a smaller content size")
