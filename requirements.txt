@@ -1,0 +1,7 @@
+openai==0.27.0
+streamlit==1.18.1
+colorthief==0.2.1
+Pillow==9.2.0
+matplotlib==3.6.0
+urllib3==1.24.3
+numpy==1.23.3
