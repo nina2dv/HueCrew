@@ -20,17 +20,17 @@ def show_palette(palette_hex):
 openai.api_key = st.secrets['openai_KEY']
 
 st.set_page_config(
-    page_title="Colour Palette",
+    page_title="HueCrew",
     page_icon="🏞️",
     layout="wide")
 # Main Page
-st.title("Colour Palette")
+st.title("HueCrew")
 
 img_num = 1
 
 col_left, col_right = st.columns([3,1])
 with col_left:
-    col_num = st.slider("Select the number of colours", min_value=1, max_value=10, value=2, step=1, help=None)
+    col_num = st.slider("Select the number of colours", min_value=2, max_value=10, value=4, step=1, help=None)
 
     form = st.form(key='my_form')
     input_text = form.text_area(label='Enter your prompt', height=120)
@@ -54,15 +54,15 @@ if input_text is not None and submit_button:
         f = io.BytesIO(fd.read())
         color_thief = ColorThief(f)
         dom_col = color_thief.get_color(quality=1)
-        palette = color_thief.get_palette(color_count=col_num)
+        palette = color_thief.get_palette(color_count=col_num-1)
         dom_col = f"#{dom_col[0]:02x}{dom_col[1]:02x}{dom_col[2]:02x}"
         with col2:
             st.color_picker(f"Dominant Colour: {dom_col}", value=dom_col, key=None, help=None, on_change=None, args=None, disabled=True,
                             label_visibility="visible")
             st.code(f"{dom_col}")
 
-        wcol = col_num
-        cols = st.columns(col_num)
+        wcol = col_num-1
+        cols = st.columns(col_num-1)
         temp_count = 0
         for count, value in enumerate(palette):
             if temp_count >= len(palette):
