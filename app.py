@@ -54,7 +54,7 @@ if input_text is not None and submit_button:
         f = io.BytesIO(fd.read())
         color_thief = ColorThief(f)
         dom_col = color_thief.get_color(quality=1)
-        palette = color_thief.get_palette(color_count=col_num-1)
+        palette = color_thief.get_palette(color_count=col_num)
         dom_col = f"#{dom_col[0]:02x}{dom_col[1]:02x}{dom_col[2]:02x}"
         with col2:
             st.color_picker(f"Dominant Colour: {dom_col}", value=dom_col, key=None, help=None, on_change=None, args=None, disabled=True,
